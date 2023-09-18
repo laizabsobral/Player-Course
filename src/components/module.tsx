@@ -18,9 +18,9 @@ export function Module() {
       </button>
 
       <nav className="relative flex flex-col gap-4 p-6">
-        <Lesson />
-        <Lesson />
-        <Lesson />
+        <Lesson title="Fundamentos do Redux" duration="09:13" />
+        <Lesson title="Fundamentos do Redux" duration="09:13" />
+        <Lesson title="Fundamentos do Redux" duration="09:13" />
       </nav>
     </div>
   );
