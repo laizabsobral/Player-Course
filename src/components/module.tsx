@@ -16,6 +16,12 @@ export function Module({ moduleIndex, title, amountOfLesson} : ModuleProps) {
   
   const dispatch = useDispatch()
 
+  const {currentModuleIndex, currentLessonIndex} = useAppSelector((state) => {
+    const {currentModuleIndex, currentLessonIndex} = state.player
+   
+    return {currentModuleIndex, currentLessonIndex}
+  })
+
 
   const lessons = useAppSelector((state) => {
     return state.player.course.modules[moduleIndex].lessons
@@ -41,7 +47,12 @@ export function Module({ moduleIndex, title, amountOfLesson} : ModuleProps) {
           
           
           {lessons.map((lesson, lessonIndex) => {
-            return <Lesson key={lesson.id} title={lesson.title} duration={lesson.duration} onPlay={() => dispatch(play([moduleIndex, lessonIndex ]))} />
+
+            const isCurrent = currentModuleIndex === moduleIndex &&
+            currentLessonIndex === lessonIndex
+
+
+            return <Lesson key={lesson.id} title={lesson.title} duration={lesson.duration} onPlay={() => dispatch(play([moduleIndex, lessonIndex ]))}  isCurrent={isCurrent}/>
           })}
         </nav>
       </Collapsible.Content>
