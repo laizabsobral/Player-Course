@@ -11,6 +11,10 @@ const {currentLesson} = useCurrentLesson()
   function handlePlayNext(){
     dispatch(next())
   }
+
+  if (!currentLesson){
+    return null
+  }
     return (
         <div className="w-full bg-zinc-950 aspect-video">
               <ReactPlayer
